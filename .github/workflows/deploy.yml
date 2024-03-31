@@ -1,0 +1,31 @@
+#lint, test, and deploy on push --> run the lint, test, and deploy build scripts --> use one or three jobs
+name: Deploy Workflow
+on: push
+
+defaults:
+  run:
+    working-directory: ./client
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Lint code
+        run: npm run lint
+  test:      
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get code
+      uses: actions/checkout@v3
+    - name: Test code
+      run: npm run test
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Deploy code
+        run: echo "Deploying..."
+  
