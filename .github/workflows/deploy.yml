@@ -2,6 +2,10 @@
 name: Deploy Workflow
 on: push
 
+defaults:
+  run:
+    working-directory: ./client
+    
 jobs:
   lint:
     runs-on: ubuntu-latest
