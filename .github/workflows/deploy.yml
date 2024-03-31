@@ -16,6 +16,17 @@ jobs:
         run: npm ci  
       - name: Lint code
         run: npm run lint
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: install node v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.17.1'
+      - name: Build code
+        run: npm run build
   test:      
     runs-on: ubuntu-latest
     steps:
@@ -27,13 +38,6 @@ jobs:
         node-version: '18.17.1'
     - name: Test code
       run: npm run test
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Build code
-        run: npm run build
   deploy:
     runs-on: ubuntu-latest
     steps:
